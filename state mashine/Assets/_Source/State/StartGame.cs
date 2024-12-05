@@ -1,14 +1,11 @@
 namespace Assets._Source.State
 {
-    public class IdleState : State
+    public class StartGame : State
     {
+
         public override void Start()
         {
-        }
 
-
-        public override void Exit()
-        {
         }
     }
 }

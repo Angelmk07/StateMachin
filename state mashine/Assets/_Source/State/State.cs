@@ -6,8 +6,9 @@ namespace Assets._Source.State
 {
     public abstract class State
     {
-        public abstract void Start();
-        public abstract void Update();
-        public abstract void Exit();
+        public virtual void Start()
+        { }
+        public virtual void Exit() 
+        { }
     }
 }
