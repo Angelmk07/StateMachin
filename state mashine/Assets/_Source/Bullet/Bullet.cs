@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets._Source
+namespace Bullet
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
