@@ -36,10 +36,7 @@ namespace Assets._Source.State
                 yield return null;
             }
             range.GetComponentInChildren<SpriteRenderer>().transform.localScale = initialScale;
-            if (_stateMachin.IsCurrentState<Invisible>())
-            {
-                Exit();
-            }
+            MonoBehaviour.Destroy(range);
         }
     }
 }

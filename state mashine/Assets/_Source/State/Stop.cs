@@ -13,18 +13,14 @@ namespace Assets._Source.State
         }
         public override void Start()
         {
-            if (game.IsCurrentState<Stop>())
+            if (Time.timeScale == 0.0f)
             {
-                Exit();
+                Time.timeScale = 1f;
                 return;
             }
             Time.timeScale = 0.0f;
         }
 
-        public override void Exit()
-        {
 
-            Time.timeScale = 1.0f;
-        }
     }
 }
