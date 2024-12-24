@@ -1,35 +1,23 @@
-﻿using Assets._Source.State;
-using System;
+﻿
+using StateSystem;
 using UnityEngine;
 
-namespace Assets.PlayerSystem
+namespace PlayerSystem
 {
     internal class PlayerListener : MonoBehaviour
     {
-        private StateMachinPlayer machinPlayer;
-        private StateMachinGame game;
+        private StateMachinePlayer<State> machinePlayer;
+        private StateMachineGame<State> game;
         private Player player;
-        private RangeAtack rangeAtack;
-        private ShootState shootState;
-        private Invisible invisible;
 
-        private Stop stop;
-        private End end = new End();
-
-        public void Construct(StateMachinPlayer machinPlayer, StateMachinGame game, Player player)
+        public void Construct(StateMachinePlayer<State> machinePlayer, StateMachineGame<State> game, Player player)
         {
-            this.machinPlayer = machinPlayer;
+            this.machinePlayer = machinePlayer;
             this.game = game;
-            stop = new(game);
             this.player = player;
         }
 
-        private void Start()
-        {
-            rangeAtack = new RangeAtack(player, machinPlayer);
-            shootState = new ShootState(player);
-            invisible = new Invisible(player, player.renderer, machinPlayer);
-        }
+
 
         private void Update()
         {
@@ -44,17 +32,17 @@ namespace Assets.PlayerSystem
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                machinPlayer.ChangeState(invisible);
+                machinePlayer.ChangeState<ShootState>();
             }
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                machinPlayer.ChangeState(shootState);
+                machinePlayer.ChangeState<RangeAtack>();
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                machinPlayer.ChangeState(rangeAtack);
+                machinePlayer.ChangeState<InvisibleState>();
             }
         }
 
@@ -62,12 +50,12 @@ namespace Assets.PlayerSystem
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                game.ChangeState(stop);
+                game.ChangeState<StopState>();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                game.ChangeState(end);
+                game.ChangeState<EndState>();
             }
         }
     }

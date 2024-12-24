@@ -1,6 +1,6 @@
-namespace Assets._Source.State
+namespace StateSystem
 {
-    public class End : State
+    public class EndState : State
     {
         public override void Start()
         {

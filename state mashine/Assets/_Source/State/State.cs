@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Source.State
+namespace StateSystem
 {
     public abstract class State
     {

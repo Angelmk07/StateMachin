@@ -1,12 +1,12 @@
-using Assets.PlayerSystem;
+using PlayerSystem;
 using UnityEngine;
 
-namespace Assets._Source.State
+namespace StateSystem
 {
-    public class Stop : State
+    public class StopState : State
     {
-        StateMachinGame game;
-        public Stop(StateMachinGame stateMachin)
+        StateMachineGame<State> game;
+        public StopState(StateMachineGame<State> stateMachin)
         {
 
             this.game = stateMachin;

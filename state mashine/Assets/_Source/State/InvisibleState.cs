@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.PlayerSystem;
+using PlayerSystem;
 
-namespace Assets._Source.State
+namespace StateSystem
 {
-    public class Invisible : State
+    public class InvisibleState : State
     {
         private SpriteRenderer spriteRenderer;
-        private StateMachinPlayer stateMachin;
+        private StateMachinePlayer<State> stateMachin;
         private Player player;
         private float time = 5;
-        public Invisible(Player player,SpriteRenderer Renderer,StateMachinPlayer stateMachin)
+        public InvisibleState(Player player,SpriteRenderer Renderer)
         {
              spriteRenderer = Renderer;
             this.player = player;
+           
+        }
+        public void GetStateMachine(StateMachinePlayer<State> stateMachin)
+        {
             this.stateMachin = stateMachin;
         }
         public override void Exit()
@@ -32,7 +36,7 @@ namespace Assets._Source.State
         IEnumerator Invisibletimer()
         {
             yield return new WaitForSeconds(time);
-            if (stateMachin.IsCurrentState<Invisible>()) 
+            if (stateMachin.IsCurrentState<InvisibleState>()) 
             {
                 Exit();
             }

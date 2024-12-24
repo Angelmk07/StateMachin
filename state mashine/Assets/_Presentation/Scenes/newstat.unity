@@ -461,6 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <bullet>k__BackingField: {fileID: 2569605455412554846, guid: 72f25a791185cd64da02c53de3fa7303, type: 3}
   <Range>k__BackingField: {fileID: 1353507202761864335, guid: d78b52b88daee1e4b83d7fec55fc566d, type: 3}
+  <renderer>k__BackingField: {fileID: 2020306734}
 --- !u!114 &2020306733
 MonoBehaviour:
   m_ObjectHideFlags: 0

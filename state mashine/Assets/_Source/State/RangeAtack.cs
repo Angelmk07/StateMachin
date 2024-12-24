@@ -1,19 +1,24 @@
-using Assets.PlayerSystem;
+using PlayerSystem;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Assets._Source.State
+namespace StateSystem
 {
     public class RangeAtack : State
     {
         private float time = 2;
-        private StateMachinPlayer _stateMachin;
+        private StateMachinePlayer<State> _stateMachin;
         private Player _player;
         private GameObject range;
-        public RangeAtack(Player player,StateMachinPlayer stateMachin) 
+        public RangeAtack(Player player) 
         {
             _player = player;
+            
+        }
+        public void GetStateMachine( StateMachinePlayer<State> stateMachin)
+        {
             _stateMachin = stateMachin;
         }
         public override void Exit()

@@ -1,4 +1,4 @@
-namespace Assets._Source.State
+namespace StateSystem
 {
     public class StartGame : State
     {
