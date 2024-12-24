@@ -2,7 +2,7 @@ using StateSystem;
 using PlayerSystem;
 using UnityEngine;
 
-namespace Cor
+namespace Core
 {
 
     public class Bootstraper : MonoBehaviour
@@ -12,7 +12,7 @@ namespace Cor
         private StartGame start = new ();
 
         private StateMachinePlayer<State> stateMachine ;
-        private StateMachineGame<State> game ;
+        private StateMachineGame<State> gameMachine;
         private RangeAtack rangeAtack;
         private ShootState shootState;
         private InvisibleState invisible;
@@ -20,16 +20,16 @@ namespace Cor
         private EndState end = new EndState();
         private void Awake()
         {
-            game = new StateMachineGame<State>(start, stop, end);
+            gameMachine = new StateMachineGame<State>(start, stop, end);
             rangeAtack = new RangeAtack(player);
             shootState = new ShootState(player);
             invisible = new InvisibleState(player, player.renderer);
             stateMachine = new StateMachinePlayer<State>(invisible, shootState, rangeAtack);
             rangeAtack.GetStateMachine(stateMachine);
             invisible.GetStateMachine(stateMachine);
-            stop = new StopState(game);
-            game.ChangeState<StartGame>();
-            _listener.Construct(stateMachine, game, player);
+            stop = new StopState(gameMachine);
+            gameMachine.ChangeState<StartGame>();
+            _listener.Construct(stateMachine, gameMachine, player);
         }
     }
 }
